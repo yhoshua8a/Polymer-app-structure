@@ -1,0 +1,38 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="./biography-view-styles.html">
+<link rel="import" href="../shared-styles.html">
+
+<dom-module id="biography-view">
+
+    <template>
+
+        <style include="biography-view-styles shared-styles"></style>
+
+        <h1 class="blue">Biography</h1>
+        <app-location id="location" route="{{route}}" url-space-regex="^[[rootPath]]">
+        </app-location>
+        <app-route id="routes" route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
+        </app-route>
+
+        <div class="grid-container">
+        <template is="dom-repeat" items="[[dataHeroes]]" as="hero">
+            <paper-card class="card" heading="[[hero.name]]" image="[[hero.url]]" alt="Emmental">
+                <div class="card-content">
+                        <p>Alter egos: [[hero.alter-egos]]</p>
+                        <p>First appearance: [[hero.first-appearance]]</p>
+                        <p>Full name: [[hero.full-name]]</p>
+                </div>
+            </paper-card>
+        </template>
+    </div>
+
+    </template>
+
+
+    <script src="./biography-view.js"></script>
+</dom-module>

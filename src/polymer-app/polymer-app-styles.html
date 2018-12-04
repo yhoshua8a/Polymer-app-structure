@@ -1,0 +1,54 @@
+<dom-module id="polymer-app-styles">
+    <template>
+        <style>
+            :host {
+                --app-primary-color: darkcyan;
+                --app-secondary-color: #181616;
+                --app-secundary-dark-color: rgb(36, 34, 34);
+                display: block;
+
+                --dark-theme-mixin: {
+                    background: var(--app-secondary-color);
+                    color: whitesmoke;
+                }
+                ;
+
+                --principal-theme-mixin: {
+                    background: var(--app-secundary-dark-color);
+                    color: var(--app-secondary-color);
+                };
+
+                --app-drawer-content-container: {
+                    @apply --dark-theme-mixin;
+                };
+
+            }
+
+            app-drawer-layout {
+                background: var(--app-secundary-dark-color);
+                color: whitesmoke;
+                height: 100vh;
+            }
+
+            app-drawer-layout:not([narrow]) [drawer-toggle] {
+                display: none;
+            }
+
+            app-header {
+                @apply --dark-theme-mixin;
+                width: 100%;
+                padding: 10px;
+            }
+
+            a {
+                text-decoration: none;
+                display: block;
+                margin-top: 25px;
+                margin-left: 20px;
+                color: whitesmoke;
+            }
+
+            
+        </style>
+    </template>
+</dom-module>

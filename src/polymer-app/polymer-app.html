@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+
+
+<link rel="import" href="./polymer-app-styles.html">
+
+
+<!-- LAZY LOADS-->
+<link rel="lazy-import" href="../views/home-view/home-view.html">
+<link rel="lazy-import" href="../views/biography-view/biography-view.html">
+<link rel="lazy-import" href="../views/gallery-view/gallery-view.html">
+<link rel="lazy-import" href="../views/garage-friend-view/garage-friend-view.html">
+<link rel="lazy-import" href="../views/garage-view/garage-view.html">
+<link rel="lazy-import" href="../views/powerstats-view/powerstats-view.html">
+<link rel="lazy-import" href="../views/connections-view/connections-view.html">
+<link rel="lazy-import" href="../views/error-view/error-view.html">
+
+
+<dom-module id="polymer-app">
+
+    <template>
+
+        <style include="polymer-app-styles"></style>
+
+        <app-location id="location" route="{{route}}" url-space-regex="^[[rootPath]]">
+        </app-location>
+
+        <app-route id="routes" route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
+        </app-route>
+
+        <app-drawer-layout fullbleed>
+            <app-drawer slot="drawer">
+                <app-toolbar>
+                    <paper-icon-button icon="menu" drawer-toggle style="color:whitesmoke;"></paper-icon-button>
+                    <div main-title style="display: inline;">Menu</div>
+                </app-toolbar>
+
+                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <a name="home" href="[[rootPath]]home">home</a>
+                    <a name="gallery" href="[[rootPath]]gallery">gallery</a>
+                    <a name="biography" href="[[rootPath]]biography">biography</a>
+                    <a name="powerstats" href="[[rootPath]]powerstats">powerstats</a>
+                    <a name="connections" href="[[rootPath]]connections">connections</a>
+                    <a name="garage-friend" href="[[rootPath]]garage-friend">garage friend</a>
+                </iron-selector>
+            </app-drawer>
+            <app-header-layout style="width: 300px; height: 400px;">
+                <app-header slot="header" fixed condenses effects="waterfall">
+
+                    <app-toolbar>
+                       <paper-icon-button icon="menu" drawer-toggle style="color: whitesmoke;"></paper-icon-button>
+                        <div main-title style="display: inline;">Heroes App</div>
+                    </app-toolbar>
+
+                </app-header>
+
+                <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="error" role="main">
+                    <home-view name="home"></home-view>
+                    <gallery-view name="gallery"></gallery-view>
+                    <biography-view name="biography"></biography-view>
+                    <powerstats-view name="powerstats"></powerstats-view>
+                    <connections-view name="connections"></connections-view>
+                    <garage-friend-view name="garage-friend"></garage-friend-view>
+                    <error-view name="error"></error-view>
+                </iron-pages>
+            </app-header-layout>
+
+        </app-drawer-layout>
+
+    </template>
+
+
+    <script src="./polymer-app.js"></script>
+</dom-module>
