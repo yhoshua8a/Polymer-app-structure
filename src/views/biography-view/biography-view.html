@@ -13,13 +13,12 @@
 
         <style include="biography-view-styles shared-styles"></style>
 
-        <h1 class="blue">Biography</h1>
         <app-location id="location" route="{{route}}" url-space-regex="^[[rootPath]]">
         </app-location>
         <app-route id="routes" route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
         </app-route>
 
-        <div class="grid-container">
+        <div class="container">
         <template is="dom-repeat" items="[[dataHeroes]]" as="hero">
             <paper-card class="card" heading="[[hero.name]]" image="[[hero.url]]" alt="Emmental">
                 <div class="card-content">
