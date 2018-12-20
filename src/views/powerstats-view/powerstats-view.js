@@ -25,7 +25,6 @@
 
       async _handleRoute(newRoute, oldRoute) {
         
-
         if (newRoute.page === "powerstats" && oldRoute) {
             console.log("HERE", newRoute, oldRoute);
             this.set('dataHeroes', []);
@@ -48,8 +47,6 @@
                     })
 
                     this.push('dataHeroes', dataHero);
-
-                    console.log("DATA",this.dataHeroes);
             }
         }
     }

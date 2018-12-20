@@ -12,19 +12,18 @@
 <dom-module id="gallery-view">
     
 <template>
-    <style include="shared-styles"></style>
+    <style include="gallery-view-styles shared-styles"></style>
 
     <app-location id="location" route="{{route}}" url-space-regex="^[[rootPath]]">
     </app-location>
     <app-route id="routes" route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
     </app-route>
 
-    <div class="container">
     <template is="dom-repeat" items="[[dataHeroes]]" as="hero">
         <paper-card class="card" heading="[[hero.name]]" image="[[hero.url]]" alt="Emmental">
         </paper-card>
     </template>
-</div>
+
 </template>
 
 
